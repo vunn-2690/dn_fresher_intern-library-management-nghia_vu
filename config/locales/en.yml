@@ -1,3 +1,14 @@
 en:
   hello: "Hello world"
   title: "BucBucBuc"
+  log_in: "Login"
+  remember_me: "Remember Me"
+  the_form_contains: "The Form Contains"
+  users:
+    login:
+      invalid_login: "Wrong Email or Password. Please try again !"
+  shared:
+    error:
+      zero: "No Error"
+      one: "1 Error"
+      other: "%{count} Errors"
