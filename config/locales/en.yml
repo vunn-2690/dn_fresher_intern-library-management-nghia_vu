@@ -1,6 +1,16 @@
 en:
-  hello: "Hello world"
-  title: "BucBucBuc"
+  app: "bucbuc"
+  nav:
+    home: "Home"
+    books: "Books"
+    transactions: "Transactions"
+    members: "Members"
+    login_signup: "Login & SignUp"
+    language:
+      language: "Language"
+      vie: "Vietnamese"
+      en: "English"
+  footer: "bucbuc Inc. All rights Resevered."
   log_in: "Login"
   remember_me: "Remember Me"
   the_form_contains: "The Form Contains"

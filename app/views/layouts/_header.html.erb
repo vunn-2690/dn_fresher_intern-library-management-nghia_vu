@@ -1,0 +1,31 @@
+<header class="navbar navbar-light bg-light navbar-fixed-top">
+  <div class="container">
+    <%= link_to t("app"), "#", id: "logo" %>
+    <%= link_to image_tag("bucbuc_logo.png",
+        alt: "logo"), "#",id: "logo_img" %>
+    <nav>
+      <ul class="nav navbar-nav navbar-right">
+        <li><%= link_to t("nav.home"), "#" %></li>
+        <li><%= link_to t("nav.books"), "#" %></li>
+        <li><%= link_to t("nav.transactions"), "#" %></li>
+        <li><%= link_to t("nav.members"), "#" %></li>
+        <li><%= link_to t("nav.login_signup"), "#" %></li>
+        <li class="dropdown">
+          <%= link_to "#", class: "dropdown-toggle", data: {toggle: "dropdown"} do %>
+            <%= t "nav.language.language" %>
+            <b class="caret"></b>
+          <% end %>
+          <ul class="dropdown-menu">
+            <li><%= link_to t("nav.language.en"), "#" %></li>
+            <li><%= link_to t("nav.language.vie"), "#" %></li>
+          </ul>
+        </li>
+        <div class="nav navbar-nav navbar-right">
+          <%= link_to image_tag("cart.svg",
+          alt: "logo"), "#", id: "cart_img" %>
+          <span class="count-product">1</span>
+        </div>
+      </ul>
+    </nav>
+  </div>
+</header>
