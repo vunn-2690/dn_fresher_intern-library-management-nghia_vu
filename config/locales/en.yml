@@ -30,6 +30,8 @@ en:
       password_repeat: "Password Repeat"
       password_req: "Password is required"
       invalid_reg: "Register Fail. Please try again !"
+  shops:
+    not_found: "Not found this shop"
   shared:
     error:
       zero: "No Error"

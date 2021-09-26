@@ -18,3 +18,5 @@ vi:
       password_repeat: "Lap lai mat khau"
       password_req: "Mat khau khong duoc de trong"
       invalid_reg: "Dang ky khong thanh cong. Vui long thu lai!"
+  shops:
+    not_found: "Not found this shop"

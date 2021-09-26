@@ -7,8 +7,8 @@ Category.create!(
 User.create!(
   name: "Example User",
   email: "a@gmail.com",
-  password: "123",
-  password_confirmation: "123")
+  password: "123123123",
+  password_confirmation: "123123123")
 Shop.create!(
   name: "Manga Shop",
   description: "Shop chuyên manga",
