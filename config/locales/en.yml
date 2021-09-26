@@ -30,3 +30,7 @@ en:
     search: "Search"
     not_found: "Book not found"
     price: "Price: "
+    detail:
+      description: "DESCRIPTION"
+      quantity: "CHOOSE QUANTITY"
+      add_to_cart: "Add to cart"

@@ -1,0 +1,28 @@
+<% provide :title, @book.title %>
+<div class="row book-detail-sale justify-content-center">
+  <div class="ps-book__image">
+    <%= image_tag("bucbuc_logo.png", alt: "book") %>
+  </div>
+  <div class="ps-book__info">
+    <h1><%= @book.title %></h1>
+    <p class="ps-book__category">
+      <a href="#"><%= @book.category_title %></a>
+    </p>
+    <h3 class="ps-book__price">
+      <%= number_to_currency(@book.price, locale: :vi) %>
+    </h3>
+    <div class="ps-book__block">
+      <h4><%= t "books.detail.description" %></h4>
+      <p><%= @book.description %></p>
+    </div>
+    <div class="ps-book__block ps-book__size">
+      <h4><%= t "books.detail.quantity" %></h4>
+      <div class="form-group quantity">
+        <input class="form-control" type="number" value="1">
+      </div>
+    </div>
+    <div class="ps-book__shopping">
+      <a class="btn btn-info" href="#"><%= t "books.detail.add_to_cart" %></a>
+    </div>
+  </div>
+</div>
