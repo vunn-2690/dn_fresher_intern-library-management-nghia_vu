@@ -15,14 +15,17 @@
       <h4><%= t "books.detail.description" %></h4>
       <p><%= @book.description %></p>
     </div>
-    <div class="ps-book__block ps-book__size">
-      <h4><%= t "books.detail.quantity" %></h4>
-      <div class="form-group quantity">
-        <input class="form-control" type="number" value="1">
+    <%= form_tag carts_path, remote: true do %>
+      <div class="ps-book__block ps-book__size">
+        <h4><%= t "books.detail.quantity" %></h4>
+        <div class="form-group quantity">
+          <%= number_field_tag :quantity, 1, class: "form-control" %>
+        </div>
       </div>
-    </div>
-    <div class="ps-book__shopping">
-      <a class="btn btn-info" href="#"><%= t "books.detail.add_to_cart" %></a>
-    </div>
+      <%= hidden_field_tag :book_id, @book.id %>
+      <div class="ps-book__shopping">
+        <%= submit_tag t("books.detail.add_to_cart"), class: "btn btn-info" %>
+      </div>
+    <% end %>
   </div>
 </div>

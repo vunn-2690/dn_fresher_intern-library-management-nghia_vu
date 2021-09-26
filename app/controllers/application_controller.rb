@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  before_action :set_locale
+  before_action :set_locale, :load_cart
 
   include SessionsHelper
 
@@ -16,5 +16,9 @@ class ApplicationController < ActionController::Base
 
   def default_url_options
     {locale: I18n.locale}
+  end
+
+  def load_cart
+    session[:cart] ||= {}
   end
 end
