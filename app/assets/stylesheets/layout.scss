@@ -1,5 +1,5 @@
 body {
-  padding-top: 15px;
+  padding: 1.5em 1em;
 }
 section {
   overflow: auto;
@@ -42,8 +42,15 @@ textarea {
 nav {
   background-color: #abc6e0;
 }
+.flash-noti {
+  margin-top: 30px;
+}
 /* footer */
 .footer {
   background-color: #abc6e0;
   margin-top: 30px;
+}
+/* pagination */
+.pagination {
+  background-color: #fff;
 }
