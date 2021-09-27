@@ -1,0 +1,42 @@
+.books-sale {
+  margin-top: 30px;
+  min-height: 82%;
+}
+.books-sale-title {
+  margin-bottom: 30px;
+  color: rgb(22, 115, 177);
+}
+.books-sale-search {
+  margin-bottom: 25px;
+  margin-top: 25px;
+  margin-right: 70%;
+}
+.books-search-not-found {
+  margin-top: 25px;
+  color: rgb(143, 53, 68);
+}
+.card-body {
+  position: relative;
+  height : 12rem;
+}
+.card-img-top {
+  width: 50%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+.card-title { 
+  font-size: 30px;
+}
+.card-text { 
+  font-size: 18px;
+}
+.box {
+  display : flex;
+  justify-content : center;
+  height : 240px;
+}
+.book-button {
+  position: absolute;
+  bottom: 0px;
+}

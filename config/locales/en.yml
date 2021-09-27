@@ -22,3 +22,11 @@ en:
       zero: "No Error"
       one: "1 Error"
       other: "%{count} Errors"
+  books:
+    books: "Books"
+    no_book: "We don't have any books yet"
+    all_books: "All the books we have"
+    see_more: "See more"
+    search: "Search"
+    not_found: "Book not found"
+    price: "Price: "

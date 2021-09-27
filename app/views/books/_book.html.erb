@@ -1,0 +1,17 @@
+<div class="card m-2" style="width: 20rem;">
+  <div class="box">
+    <%= link_to image_tag("bucbuc_logo.png", alt: "book",
+      class: "card-img-top"), "#" %>
+  </div>
+  <div class="card-body">
+    <h5 class="card-title"><%= book.title %></h5>
+    <p class="card-text">
+      <%= t "books.price" %>
+      <%= number_to_currency(book.price, locale: :vi) %>
+    </p>
+    <div class="book-button">
+      <%= link_to t("books.see_more"), "#", class: "btn btn-primary mb-2" %>
+      <p><%= link_to book.shop.name, "#", class: "badge badge-secondary" %></p>
+    </div>
+  </div>
+</div>

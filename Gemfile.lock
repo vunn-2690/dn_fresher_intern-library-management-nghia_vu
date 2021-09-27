@@ -75,7 +75,7 @@ GEM
       autoprefixer-rails (>= 6.0.3)
       popper_js (>= 1.12.9, < 2)
       sass (>= 3.5.2)
-    bootstrap-kaminari-views (0.0.5)
+    bootstrap4-kaminari-views (1.0.1)
       kaminari (>= 0.13)
       rails (>= 3.1)
     builder (3.2.4)
@@ -331,7 +331,7 @@ DEPENDENCIES
   bcrypt (= 3.1.11)
   bootsnap (>= 1.4.4)
   bootstrap (~> 4.0.0)
-  bootstrap-kaminari-views
+  bootstrap4-kaminari-views
   byebug
   capybara (>= 3.26)
   config

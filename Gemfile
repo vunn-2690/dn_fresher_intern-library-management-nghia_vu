@@ -6,7 +6,7 @@ gem "active_storage_validations", "0.8.2"
 gem "bcrypt", "3.1.11"
 gem "bootsnap", ">= 1.4.4", require: false
 gem "bootstrap", "~>4.0.0"
-gem "bootstrap-kaminari-views"
+gem "bootstrap4-kaminari-views"
 gem "config"
 gem "faker", "2.1.2"
 gem "figaro"
