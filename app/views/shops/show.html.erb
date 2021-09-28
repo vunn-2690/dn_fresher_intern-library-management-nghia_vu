@@ -13,8 +13,8 @@
       <ol class="row books justify-content-center">
         <%= render @books %>
       </ol>
-      <div class="row justify-content-center">
-        <%= paginate @books, theme: "twitter-bootstrap-4" %>
+      <div class="row justify-content-center paginate">
+        <%= paginate @books, theme: "twitter-bootstrap-4"%>
       </div>
     <% else %>
       <h2><%= t "books.not_found" %></h2>
