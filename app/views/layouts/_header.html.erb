@@ -19,9 +19,8 @@
           <li><%= link_to t("nav.language.vie"), locale:"vi", class: "dropdown-item" %></li>
         </ul>
       </li>
-      <li>
-        <%= link_to image_tag("cart.svg", alt: "logo"), "#", id: "cart_img" %>
-        <span class="count-product">0</span>
+      <li id="cart">
+        <%= render "shared/cart" %>
       </li>
     </ul>
   </div>

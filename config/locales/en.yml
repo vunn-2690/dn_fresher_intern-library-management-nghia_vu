@@ -47,3 +47,6 @@ en:
       description: "DESCRIPTION"
       quantity: "CHOOSE QUANTITY"
       add_to_cart: "Add to cart"
+  cart:
+    add_success: "Add the book to cart successfuly"
+    quantity_failed: "Quantity exceeds we have"

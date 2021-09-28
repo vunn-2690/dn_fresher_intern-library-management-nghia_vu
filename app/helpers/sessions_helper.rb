@@ -16,4 +16,17 @@ module SessionsHelper
     session.delete(:user_id)
     @current_user = nil
   end
+
+  def load_book_id_in_cart
+    @book_id_in_cart = current_cart.keys
+  end
+
+  def add_book_to_cart book_id, quantity
+    current_cart.delete(book_id.to_s)
+    current_cart[book_id.to_s.to_sym] = quantity
+  end
+
+  def current_cart
+    @current_cart ||= session[:cart]
+  end
 end

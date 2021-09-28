@@ -8,5 +8,6 @@ Rails.application.routes.draw do
     resources :books, only: :show
     get "/signup", to: "users#new"
     post "/signup", to: "users#create"
+    resources :carts, only: :create
   end
 end
