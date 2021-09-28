@@ -1,0 +1,22 @@
+<% provide :title, @shop.name %>
+<div class="row header-shop justify-content-center">
+  <div class="col-md-5 img-shop">
+    <%= image_tag("5.jpg", alt: "shop", style: "height:100%;width:100%") %>
+  </div>
+  <div class="col-md-6 info-shop">
+    <h2 class="title-shop"><%= @shop.name %></h2>
+    <p class="description-shop"><%= @shop.description %></p>
+  </div>
+</div>
+<div class="body-shop">
+    <% if @books.any? %>
+      <ol class="row books justify-content-center">
+        <%= render @books %>
+      </ol>
+      <div class="row justify-content-center">
+        <%= paginate @books, theme: "twitter-bootstrap-4" %>
+      </div>
+    <% else %>
+      <h2><%= t "books.not_found" %></h2>
+    <% end %>  
+</div>

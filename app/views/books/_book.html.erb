@@ -12,7 +12,7 @@
     <div class="book-button">
       <%= link_to t("books.see_more"), book,
         class: "btn btn-primary mb-2" %>
-      <p><%= link_to book.shop.name, "#", class: "badge badge-secondary" %></p>
+      <p><%= link_to book.shop_name, book.shop, class: "badge badge-secondary" %></p>
     </div>
   </div>
 </div>

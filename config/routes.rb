@@ -9,5 +9,6 @@ Rails.application.routes.draw do
     get "/signup", to: "users#new"
     post "/signup", to: "users#create"
     resources :carts, only: :create
+    resources :shops, only: :show
   end
 end
