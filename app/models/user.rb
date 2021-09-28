@@ -1,5 +1,13 @@
 class User < ApplicationRecord
+  before_save :downcase_email
   enum status: {member: 0, admin: 1}
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i.freeze
+
+  validates :name, presence: true, length: {minimum: Settings.length.digit_10}
+  validates :email, presence: true, uniqueness: true,
+    length: {maximum: Settings.length.digit_255},
+    format: {with: VALID_EMAIL_REGEX}
+  validates :password, length: {minimum: Settings.length.digit_8}
   has_secure_password
 
   def self.digest string
@@ -9,5 +17,9 @@ class User < ApplicationRecord
               BCrypt::Engine.cost
             end
     BCrypt::Password.create string, cost: cost
+  end
+
+  def downcase_email
+    email.downcase!
   end
 end
