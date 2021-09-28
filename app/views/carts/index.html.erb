@@ -39,10 +39,16 @@
         </table>
       </div>
     </div>
-    <hr>
     <div class="row">
-      <%= link_to t("cart.pay"), "#", class: "btn btn-primary btn-pay" %>
-      <%= link_to t("cart.reset"), reset_carts_path, class: "btn btn-danger btn-pay" %>
+      <% if logged_in? %>
+        <%= link_to t("cart.pay"), new_user_order_path(current_user),
+          class: "btn btn-primary btn-pay" %>
+      <% else %>
+        <%= link_to t("cart.login_pay"), login_path,
+          class: "btn btn-primary btn-pay" %>
+      <% end %>
+      <%= link_to t("cart.reset"), reset_carts_path,
+        class: "btn btn-danger btn-pay" %>
     </div>
   <% else %>
     <h1 class="text-center cart-index-title">

@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  before_action :set_locale, :load_cart
+  before_action :set_locale, :load_cart, :load_info_receiver
 
   include SessionsHelper
 
@@ -18,7 +18,18 @@ class ApplicationController < ActionController::Base
     {locale: I18n.locale}
   end
 
+  def logged_in_user
+    return if logged_in?
+
+    flash[:danger] = t "please_login"
+    redirect_to login_path
+  end
+
   def load_cart
     session[:cart] ||= {}
+  end
+
+  def load_info_receiver
+    session[:info_receiver] ||= {}
   end
 end

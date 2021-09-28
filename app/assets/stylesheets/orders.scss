@@ -1,14 +1,9 @@
-// Place all the styles related to the Orders controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: https://sass-lang.com/
 .body-order{
   min-height: 80%;
 }
-
 .body-header{
   color: rgb(22, 115, 177);
 }
-
 .status{
   font-size: 1rem;
   padding: 0.375rem 0.75rem;
@@ -18,21 +13,39 @@
   border: 1px solid;
   border-radius: 5px;
 }
-
 .pending{
   background-color: rgb(255, 191, 94);
 }
-
 .success{
   color: white;
   background-color: rgb(145, 243, 115);
 }
-
 .cancel{
   color: white;
   background-color: rgb(241, 116, 116);
 }
-
 .btn {
   width: 120px;
+}
+.delivery-info {
+  margin-top: 60px;
+  min-height: 83%;
+}
+.delivery-name {
+  margin-left: 25%;
+  margin-right: 25%;
+  h4 {
+    color: rgb(78, 73, 73);
+    margin-left: 15px;
+  }
+}
+.delivery-btn {
+  margin-top: 25px;
+  width: 8rem;
+}
+.delivery-btn {
+  margin-top: 25px auto;
+  width: 8rem;
+  margin-left: 45%;
+  margin-left: 45%;
 }
