@@ -1,6 +1,6 @@
 .books-sale {
   margin-top: 30px;
-  min-height: 82%;
+  min-height: 83%;
 }
 .books-sale-title {
   margin-bottom: 30px;
@@ -17,7 +17,7 @@
 }
 .card-body {
   position: relative;
-  height : 12rem;
+  height: 12rem;
 }
 .card-img-top {
   width: 50%;
@@ -25,18 +25,60 @@
   display: block;
   object-fit: cover;
 }
-.card-title { 
+.card-title {
   font-size: 30px;
 }
-.card-text { 
+.card-text {
   font-size: 18px;
 }
 .box {
-  display : flex;
-  justify-content : center;
-  height : 240px;
+  display: flex;
+  justify-content: center;
+  height: 240px;
 }
 .book-button {
   position: absolute;
   bottom: 0px;
+}
+/* book detail for sale */
+.book-detail-sale {
+  min-height: 83%;
+  padding-top: 40px;
+}
+.ps-book__image {
+  img {
+    max-width: 80%;
+  }
+}
+.ps-book__info {
+  padding-top: 30px;
+  width: 400px;
+  h1 {
+    font-size: 50px;
+  }
+  .ps-book__category a {
+    font-family: "Montserrat", sans-serif;
+    font-size: 20px;
+    text-align: left;
+    color: #8d8d8d;
+  }
+  .ps-book__category a:hover {
+    color: #168ac0;
+  }
+  .ps-book__block > h4 {
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    font-family: "Archivo Narrow", sans-serif;
+    font-size: 22px;
+    color: #313131;
+    border-bottom: 1px solid #e5e5e5;
+  }
+  .ps-book__size .quantity {
+    margin-right: 250px;
+  }
+  .ps-book__size > h4 a:hover {
+    color: #2ac37d;
+  }
 }
