@@ -7,5 +7,5 @@ class Book < ApplicationRecord
   scope :seach_by_title, (lambda do |keyword|
     where("title LIKE ?", "%#{keyword}%") if keyword.present?
   end)
-  scope :by_book_id, ->(ids){where id: ids}
+  scope :by_book_ids, ->(ids){where id: ids}
 end
