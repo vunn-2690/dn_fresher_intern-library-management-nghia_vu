@@ -18,7 +18,7 @@ module SessionsHelper
   end
 
   def load_book_id_in_cart
-    @book_id_in_cart = current_cart.keys
+    current_cart.keys
   end
 
   def add_book_to_cart book_id, quantity

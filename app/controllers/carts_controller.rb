@@ -1,6 +1,11 @@
 class CartsController < ApplicationController
   before_action :load_book, only: :create
 
+  def index
+    @books = Book.by_book_ids(load_book_id_in_cart)
+    @cart = current_cart
+  end
+
   def create
     add_book_to_cart(params[:book_id], params[:quantity]) if check_quantity
     respond_to do |format|
