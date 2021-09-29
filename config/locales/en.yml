@@ -7,6 +7,7 @@ en:
     transactions: "Transactions"
     members: "Members"
     login_signup: "Login & SignUp"
+    logout: "Logout"
     language:
       language: "Language"
       vie: "Vietnamese"
@@ -90,15 +91,24 @@ en:
         confirmation: "and Password must match."
   orders:
     shop_title: "YOUR SHOP ORDER"
+    order_info: "ORDER'S INFO"
     not_found: "These is no orders"
+    not_permission: "Your havent permission to get this Order"
     customer: "Customer Name"
     phone: "Phone"
-    total_price: "Total Price"
+    amount: "Amount"
+    total_price: "Total"
     status: "Status"
     pending: "Pending"
     sending: "Sending"
     success: "Success"
     cancel: "Cancel"
+    details:
+      title: "Book's Name"
+      quantity: "Quantity"
+      price: "Price"
+      amount: "Amount"
+      total: "Total"
   order:
     title: "Delivery Information"
     order_infor: "Order Information"
@@ -120,4 +130,3 @@ en:
     pending: "badge-warning"
     cancel: "badge-danger"
     success: "badge-success"
-    

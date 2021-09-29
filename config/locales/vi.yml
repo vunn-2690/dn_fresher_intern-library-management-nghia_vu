@@ -22,6 +22,7 @@ vi:
     shops: "Cua hang"
     all_shops: "Tat ca cac cua hang"
     not_found: "Khong ton tai cua hang nay"
+    not_permission: "Don hang nay khong phai cua ban"
   shared:
     see_more: "Xem them"
     view_shop: "Xem Shop"
@@ -34,15 +35,23 @@ vi:
     not_found: "Not found this shop"
   orders:
     shop_title: "DON HANG CUA SHOP"
+    order_info: "THONG TIN DON HANG"
     not_found: "Hien khong co don hang nao"
     customer: "Ten khach hang"
     phone: "So dien thoai"
+    amount: "Tong"
     total_price: "Tong hoa don"
     status: "Tinh trang"
     pending: "Hang cho"
     sending: "Dang gui"
     success: "Hoan thanh"
     cancel: "Huy bo"
+    details:
+      title: "Ten sach"
+      quantity: "So luong"
+      price: "Gia"
+      amount: "Tong"
+      total: "Tong cong"
   activerecord:
     errors:
       models:
