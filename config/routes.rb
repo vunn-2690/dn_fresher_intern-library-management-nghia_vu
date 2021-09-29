@@ -8,9 +8,11 @@ Rails.application.routes.draw do
     resources :books, only: :show
     get "/signup", to: "users#new"
     post "/signup", to: "users#create"
-    resources :shops, only: %i(show index)
     resources :carts, only: %i(index create destroy) do
       get :reset, on: :collection
+    end
+    resources :shops, only: %i(show index) do
+      resources :orders
     end
   end
 end

@@ -38,7 +38,10 @@ en:
     see_more: "See More"
     view_shop: "View Shop"
     search: "Search"
-    errors:
+    invalid_permision: "You haven't permission to get this URL"
+    edit: "Edit"
+    details: "Details"
+    error:
       zero: "No Error"
       one: "Have 1 Error"
       other: "Have %{count} Errors"
@@ -83,3 +86,14 @@ en:
               password: "is minimum character is 8"
       messages:
         confirmation: "and Password must match."
+  orders:
+    shop_title: "YOUR SHOP ORDER"
+    not_found: "These is no orders"
+    customer: "Customer Name"
+    phone: "Phone"
+    total_price: "Total Price"
+    status: "Status"
+    pending: "Pending"
+    sending: "Sending"
+    success: "Success"
+    cancel: "Cancel"
