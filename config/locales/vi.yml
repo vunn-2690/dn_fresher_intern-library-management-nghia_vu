@@ -3,6 +3,7 @@ vi:
   title: "BucBucBuc"
   log_in: "Dang nhap"
   sign_up: "Sign Up"
+  welcome: "Chao mung den voi BucBuc"
   forgot_password: "Quen mat khau"
   remember_me: "Luu thong tin"
   the_form_contains: "Contain Form"
@@ -26,7 +27,22 @@ vi:
     see_more: "Xem them"
     view_shop: "Xem Shop"
     search: "Tim kiem"
-    error:
+    errors:
       zero: "Khong co loi"
-      one: "1 Loi"
-      other: "%{count} Loi"
+      one: "Co 1 Loi"
+      other: "Co %{count} Loi"
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            name:
+              too_short: "phai co it nhat 10 ky tu"
+            email:
+              too_long: "dai toi da 255 ky tu"
+              blank: "khong duoc de trong"
+              taken: "da duoc su dung"
+              invalid: "sai dinh dang. Vi du : zxc@zxc.com"
+              password: "phai co it nhat 8 ky tu"
+      messages:
+        confirmation: "phai giong Password"

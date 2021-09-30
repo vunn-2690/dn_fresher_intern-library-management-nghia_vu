@@ -7,6 +7,6 @@ class Shop < ApplicationRecord
   end)
 
   def all_books
-    self.books.recent_books
+    books.recent_books
   end
 end
