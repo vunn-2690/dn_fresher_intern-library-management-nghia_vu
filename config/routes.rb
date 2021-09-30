@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     resources :books, only: :show
     get "/signup", to: "users#new"
     post "/signup", to: "users#create"
-    resources :shops, only: :show
+    resources :shops, only: %i(show index)
     resources :carts, only: %i(index create)
   end
 end

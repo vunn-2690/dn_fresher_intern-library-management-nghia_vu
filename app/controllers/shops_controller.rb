@@ -1,8 +1,13 @@
 class ShopsController < ApplicationController
   before_action :load_shop, only: :show
 
+  def index
+    @shops = Shop.search_by_name(params[:search
+      ]).page(params[:page]).per(Settings.length.digit_6)
+  end
+
   def show
-    @books = @shop.books.recent_books.page(params[:page
+    @books = @shop.all_books.page(params[:page
       ]).per(Settings.length.digit_5)
   end
 

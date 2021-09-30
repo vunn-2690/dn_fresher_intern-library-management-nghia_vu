@@ -31,8 +31,13 @@ en:
       password_req: "Password is required"
       invalid_reg: "Register Fail. Please try again !"
   shops:
+    shops: "Shops"
+    all_shops: "All Shops"
     not_found: "Not found this shop"
   shared:
+    see_more: "See More"
+    view_shop: "View Shop"
+    search: "Search"
     error:
       zero: "No Error"
       one: "1 Error"

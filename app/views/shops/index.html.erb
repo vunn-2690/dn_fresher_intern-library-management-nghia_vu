@@ -1,0 +1,27 @@
+<% provide :title, t("shops.shops") %>
+<div class="container body">
+  <div class="row">
+    <div class="col-md-6 list-shop-title">
+      <h2><%= t "shops.all_shops" %></h2>
+    </div>
+    <div class="col-md-6">
+    <%= form_tag shops_path, method: "get" do %>
+      <div class="input-group">
+        <%= text_field_tag :search, "", class: "form-control" %>
+        <%= submit_tag t("shared.search"), class: "btn btn-primary" %>
+      </div>
+    <% end %>
+    </div>
+  </div>
+  <hr>
+  <div class="content-shops">
+    <% if @shops.any? %>
+      <ol class="row books justify-content-center">
+        <%= render @shops %>
+      </ol>
+      <%= paginate @shops, theme: "twitter-bootstrap-4" %>
+    <% else %>
+      <h2 class="books-search-not-found"><%= t "shops.not_found" %></h2>
+    <% end %>
+  </div>
+</div>

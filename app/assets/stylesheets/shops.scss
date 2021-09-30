@@ -2,15 +2,24 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
+.body{
+  min-height: 85%;
+}
+
 .img-shop{
   height: 230px;
   width: 100%;
   margin-right: 20px;
 }
 
+.paginate nav{
+  background-color: #ebebeb;
+}
+
 .body-shop{
   padding: 50px 0px;
   background-color: #ebebeb;
+  min-height: 50%;
 }
 
 .header-shop{
@@ -24,4 +33,12 @@
 
 .description-shop{
   font-size: 21px;
+}
+
+.list-shop-title{
+  color: rgb(22, 115, 177);
+}
+
+.content-shops{
+  padding: 55px;
 }

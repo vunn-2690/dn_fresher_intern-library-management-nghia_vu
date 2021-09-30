@@ -19,4 +19,14 @@ vi:
       password_req: "Mat khau khong duoc de trong"
       invalid_reg: "Dang ky khong thanh cong. Vui long thu lai!"
   shops:
-    not_found: "Not found this shop"
+    shops: "Cua hang"
+    all_shops: "Tat ca cac cua hang"
+    not_found: "Khong ton tai cua hang nay"
+  shared:
+    see_more: "Xem them"
+    view_shop: "Xem Shop"
+    search: "Tim kiem"
+    error:
+      zero: "Khong co loi"
+      one: "1 Loi"
+      other: "%{count} Loi"

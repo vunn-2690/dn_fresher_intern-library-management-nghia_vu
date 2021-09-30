@@ -1,0 +1,14 @@
+<div class="card m-2" style="width: 20rem;">
+  <div class="box">
+    <%= link_to image_tag("shop.jpg", alt: "shops", class: "card-img-top") %>
+  </div>
+  <div class="card-body">
+    <h5 class="card-title"><%= shop.name %></h5>
+    <p class="card-text">
+      <%= shop.description %>
+    </p>
+    <div class="book-button">
+      <%= link_to t("shared.view_shop"), shop, class: "btn btn-primary mb-2" %>
+    </div>
+  </div>
+</div>
