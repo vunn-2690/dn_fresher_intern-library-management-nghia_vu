@@ -13,6 +13,16 @@ class CartsController < ApplicationController
     end
   end
 
+  def destroy
+    delete_cart_item params[:id]
+    redirect_to carts_path
+  end
+
+  def reset
+    reset_cart
+    redirect_to carts_path
+  end
+
   private
 
   def check_quantity

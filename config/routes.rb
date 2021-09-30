@@ -9,6 +9,8 @@ Rails.application.routes.draw do
     get "/signup", to: "users#new"
     post "/signup", to: "users#create"
     resources :shops, only: %i(show index)
-    resources :carts, only: %i(index create)
+    resources :carts, only: %i(index create destroy) do
+      get :reset, on: :collection
+    end
   end
 end

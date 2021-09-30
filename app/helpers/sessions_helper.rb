@@ -21,6 +21,14 @@ module SessionsHelper
     current_cart.keys
   end
 
+  def reset_cart
+    current_cart.clear
+  end
+
+  def delete_cart_item id
+    current_cart.delete(id.to_s)
+  end
+
   def add_book_to_cart book_id, quantity
     current_cart.delete(book_id.to_s)
     current_cart[book_id.to_s.to_sym] = quantity
