@@ -1,6 +1,7 @@
 class Book < ApplicationRecord
   belongs_to :shop
   belongs_to :category
+  has_many :order_details, dependent: :destroy
   delegate :title, to: :category, prefix: true
   delegate :name, to: :shop, prefix: true
   scope :recent_books, ->{order created_at: :desc}
