@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_23_074813) do
+ActiveRecord::Schema.define(version: 2021_09_30_062028) do
 
   create_table "active_storage_attachments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
@@ -60,6 +60,31 @@ ActiveRecord::Schema.define(version: 2021_09_23_074813) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "order_details", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.integer "quantily"
+    t.decimal "price", precision: 10
+    t.bigint "order_id", null: false
+    t.bigint "book_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["book_id"], name: "index_order_details_on_book_id"
+    t.index ["order_id"], name: "index_order_details_on_order_id"
+  end
+
+  create_table "orders", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.integer "status", default: 0
+    t.decimal "total_price", precision: 10
+    t.string "name"
+    t.string "address"
+    t.string "phone"
+    t.bigint "shop_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["shop_id"], name: "index_orders_on_shop_id"
+    t.index ["user_id"], name: "index_orders_on_user_id"
+  end
+
   create_table "reviews", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.string "email"
@@ -79,31 +104,6 @@ ActiveRecord::Schema.define(version: 2021_09_23_074813) do
     t.index ["user_id"], name: "index_shops_on_user_id"
   end
 
-  create_table "transaction_details", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.integer "quantily"
-    t.decimal "price", precision: 10
-    t.bigint "transaction_id", null: false
-    t.bigint "book_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["book_id"], name: "index_transaction_details_on_book_id"
-    t.index ["transaction_id"], name: "index_transaction_details_on_transaction_id"
-  end
-
-  create_table "transactions", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.integer "status", default: 0
-    t.decimal "total_price", precision: 10
-    t.string "name"
-    t.string "address"
-    t.string "phone"
-    t.bigint "shop_id", null: false
-    t.bigint "user_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["shop_id"], name: "index_transactions_on_shop_id"
-    t.index ["user_id"], name: "index_transactions_on_user_id"
-  end
-
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.string "email"
@@ -120,10 +120,10 @@ ActiveRecord::Schema.define(version: 2021_09_23_074813) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "books", "categories"
   add_foreign_key "books", "shops"
+  add_foreign_key "order_details", "books"
+  add_foreign_key "order_details", "orders"
+  add_foreign_key "orders", "shops"
+  add_foreign_key "orders", "users"
   add_foreign_key "reviews", "books"
   add_foreign_key "shops", "users"
-  add_foreign_key "transaction_details", "books"
-  add_foreign_key "transaction_details", "transactions"
-  add_foreign_key "transactions", "shops"
-  add_foreign_key "transactions", "users"
 end

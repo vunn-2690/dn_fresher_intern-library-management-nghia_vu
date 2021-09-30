@@ -29,9 +29,8 @@
                   locale: :vi) %></td>
                 <td>
                   <div class="d-flex flex-column">
-                    <a class="btn btn-outline-danger" href="#" role="button">
-                      <%= t "cart.delete" %>
-                    </a>
+                    <%= link_to t("cart.delete"), cart_path(book.id),
+                      method: "delete", class: "btn btn-outline-danger" %>
                   </div>
                 </td>
               </tr>
@@ -43,7 +42,7 @@
     <hr>
     <div class="row">
       <%= link_to t("cart.pay"), "#", class: "btn btn-primary btn-pay" %>
-      <%= link_to t("cart.reset"), "#", class: "btn btn-danger btn-pay" %>
+      <%= link_to t("cart.reset"), reset_carts_path, class: "btn btn-danger btn-pay" %>
     </div>
   <% else %>
     <h1 class="text-center cart-index-title">
