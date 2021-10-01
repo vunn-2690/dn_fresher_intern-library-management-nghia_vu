@@ -3,6 +3,7 @@ class User < ApplicationRecord
   enum status: {member: 0, admin: 1}
   has_many :orders, dependent: :destroy
   has_one :shop, dependent: :destroy
+
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i.freeze
 
   validates :name, presence: true, length: {minimum: Settings.length.digit_10}
@@ -11,6 +12,10 @@ class User < ApplicationRecord
     format: {with: VALID_EMAIL_REGEX}
   validates :password, length: {minimum: Settings.length.digit_8}
   has_secure_password
+
+  def all_orders
+    orders.recent_orders
+  end
 
   def self.digest string
     cost =  if ActiveModel::SecurePassword.min_cost
