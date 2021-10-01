@@ -38,10 +38,10 @@ en:
     see_more: "See More"
     view_shop: "View Shop"
     search: "Search"
-    error:
+    errors:
       zero: "No Error"
-      one: "1 Error"
-      other: "%{count} Errors"
+      one: "Have 1 Error"
+      other: "Have %{count} Errors"
   books:
     books: "Books"
     no_book: "We don't have any books yet"
@@ -68,3 +68,18 @@ en:
     no_book: "No book in cart. Go shopping, please"
     back_shopping: "Back to shopping"
     delete: "Delete"
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            name:
+              too_short: "is Minimum character is 10"
+            email:
+              too_long: "is maximum character is 255"
+              blank: "is require"
+              taken: "is used"
+              invalid: "is invalid. Must be ex: zxc@zxc.com"
+              password: "is minimum character is 8"
+      messages:
+        confirmation: "and Password must match."

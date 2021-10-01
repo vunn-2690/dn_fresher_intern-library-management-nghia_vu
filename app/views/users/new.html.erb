@@ -6,6 +6,7 @@
         <span class="login100-form-title p-b-43">
           <%= t "sign_up" %>
         </span>
+        <%= render "shared/error_messages", object: f.object %>
         <div class="wrap-input100">
           <%= f.text_field :name, class: "input100", placeholder: t("users.register.name")%>
           <span class="focus-input100"></span>
