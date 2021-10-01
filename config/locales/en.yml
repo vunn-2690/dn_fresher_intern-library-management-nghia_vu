@@ -3,7 +3,7 @@ en:
   please_login: "Please login"
   nav:
     home: "Home"
-    books: "Books"
+    your_shop: "Your shop"
     transactions: "Transactions"
     members: "Members"
     login_signup: "Login & SignUp"

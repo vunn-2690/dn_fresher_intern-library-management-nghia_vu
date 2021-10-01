@@ -1,4 +1,8 @@
 <% provide :title, @book.title %>
+<div>
+  <%= link_to t("cart.back_shopping"),
+    static_pages_home_path, class: "btn btn-primary btn-back-shopping-book" %>
+</div>
 <div class="row book-detail-sale justify-content-center">
   <div class="ps-book__image">
     <%= image_tag("bucbuc_logo.png", alt: "book") %>
