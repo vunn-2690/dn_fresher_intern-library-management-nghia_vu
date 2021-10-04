@@ -1,9 +1,25 @@
 class ShopsController < ApplicationController
   before_action :load_shop, only: :show
+  before_action :check_user, only: %i(new create)
 
   def index
     @shops = Shop.search_by_name(params[:search])
                  .page(params[:page]).per(Settings.length.digit_6)
+  end
+
+  def new
+    @shop = Shop.new
+  end
+
+  def create
+    @shop = current_user.shop.new shop_params
+    if @shop.save
+      flash[:success] = t "shops.success"
+      redirect_to @shop
+    else
+      flash.now[:danger] = t "shops.fail"
+      render :new
+    end
   end
 
   def show
@@ -18,6 +34,17 @@ class ShopsController < ApplicationController
     return if @shop
 
     flash[:danger] = t("shops.not_found")
+    redirect_to root_url
+  end
+
+  def shop_params
+    params.require(:shop).permit(:name, :description)
+  end
+
+  def check_user
+    return if current_user.id == params[:user_id].to_i
+
+    flash[:danger] = t "shared.invalid_permision"
     redirect_to root_url
   end
 end

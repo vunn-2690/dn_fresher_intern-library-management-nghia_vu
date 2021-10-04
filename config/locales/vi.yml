@@ -2,7 +2,7 @@ vi:
   hello: "Hello world"
   title: "BucBucBuc"
   log_in: "Dang nhap"
-  sign_up: "Sign Up"
+  sign_up: "Dang ky"
   forgot_password: "Quen mat khau"
   remember_me: "Luu thong tin"
   the_form_contains: "Contain Form"
@@ -24,6 +24,11 @@ vi:
     shop_order: "Quan ly don hang"
     manage_book: "Quan ly sach"
     edit_shop: "Chinh sua Shop"
+    add_shop: "Tao Shop"
+    success: "Tao Shop thanh cong"
+    fail: "Tao Shop that bai, vui long thu lai"
+    name: "Ten Shop"
+    description: "Mo ta"
     not_found: "Khong ton tai cua hang nay"
     not_permission: "Don hang nay khong phai cua ban"
   books:
@@ -38,7 +43,7 @@ vi:
       zero: "Khong co loi"
       one: "1 Loi"
       other: "%{count} Loi"
-    not_found: "Not found this shop"
+    not_found: "Khong tim thay shop"
   orders:
     shop_title: "DON HANG CUA SHOP"
     order_info: "THONG TIN DON HANG"
@@ -71,5 +76,10 @@ vi:
               taken: "da duoc su dung"
               invalid: "sai dinh dang. Vi du : zxc@zxc.com"
               password: "phai co it nhat 8 ky tu"
+        shop:
+          attributes:
+            name:
+              taken: "da duoc su dung"
+              blank: "khong duoc de trong"
       messages:
         confirmation: "phai giong Password"
