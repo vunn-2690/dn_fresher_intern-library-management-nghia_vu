@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   before_action :set_locale, :load_cart, :load_info_receiver
 
   include SessionsHelper
+  include OrdersHelper
 
   private
 

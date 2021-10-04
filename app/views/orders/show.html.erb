@@ -1,0 +1,70 @@
+<div class="body-order">
+  <h1 class="text-center font-tilte"><%=  t "orders.order_info" %></h1>
+  <% if @order %>
+    <div class=" header-order d-flex justify-content-center">
+      <div class="card-header-order row col-md-5">
+        <div class="col-md-6">
+          <p class="card-order"><b><%= t("orders.customer") %>:</b></p>
+          <p class="card-order"><b><%= t("orders.name") %>:</b></p>
+          <p class="card-order"><b><%= t("orders.address") %>:</b></p>
+          <p class="card-order"><b><%= t("orders.phone") %>:</b></p>
+          <p class="card-order"><b><%= t("orders.status") %>:</b></p>
+          <p class="card-order"><b><%= t("orders.day_create") %>:</b></p>
+        </div>
+        <div class="col-md-6 text-center">
+          <p class="card-order"><%= @order.user_name %></p>
+          <p class="card-order"><%= @order.name %></p>
+          <p class="card-order"><%= @order.address %></p>
+          <p class="card-order"><%= @order.phone %></p>
+          <p class="card-order">
+            <span class="badge <%= t "class.#{@order.status}" %>">
+              <%= @order.status %>
+            </span>
+          </p>
+          <p class="card-order"><%= @order.created_at.to_time.strftime("%d/%m/%Y at %l:%M %p") %></p>
+        </div>
+      </div>
+    </div>
+    <div class="container contain">
+      <div class="row justify-content-center">
+        <div class="col-md-12">
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th class="col-md-1">No.</th>
+                <th class="text-center col-md-3"><%= t "orders.details.title" %></th>
+                <th class="text-center col-md-1"><%= t "orders.details.quantity" %></th>
+                <th class="text-center col-md-2"><%= t "orders.details.price" %>
+                  <th class="text-center col-md-1"><%= t "orders.details.amount" %></th>
+                  <tr>
+                  </thead>
+                  <tbody>
+                    <% @order_details.each_with_index do |order_detail, index|%>
+                      <tr>
+                        <td class="align-middle "><%= index +1 %></td>
+                        <td class="text-center align-middle "><%= order_detail.book_title %></td>
+                        <td class="text-center align-middle "><%= order_detail.quantily %></td>
+                        <td class="text-center align-middle "><%= number_to_currency(order_detail.price, locale: :vi) %></td>
+                        <td class="text-center align-middle "><%= number_to_currency(order_detail.price*order_detail.quantily, locale: :vi) %></td>
+                      </tr>
+                    <% end %>
+                  </tbody>
+                </table>
+              </div>
+              <hr>
+              <div class="col-md-12 d-flex justify-content-end">
+                <div class="col-md-6 d-flex justify-content-end">
+                  <div class="col-md-3">
+                    <p class="card-order"><b><%= t "orders.details.total" %></b></p>
+                  </div>
+                  <div class="col-md-5">
+                    <p class="card-order text-right"><b> <%= number_to_currency(@total, locale: :vi) %></b></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% else %>
+          <h2><%= t "orders.not_found" %></h2>
+        <% end %>
+      </div>

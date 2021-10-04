@@ -19,12 +19,14 @@ Rails.application.routes.draw do
     resources :users, only: %i(new show create) do
       namespace :shop do
         resources :orders, only: %i(index show) do
-          put :approve, on: :member
-          put :disclaim, on: :member
+          member do 
+            put :approve
+            put :disclaim
+          end
         end
       end
-      resources :orders, only: %i(new create index) do
-        get "/cancel", to: "orders#cancel"
+      resources :orders, only: %i(new create index show) do
+        put :cancel, on: :member
       end
     end 
   end

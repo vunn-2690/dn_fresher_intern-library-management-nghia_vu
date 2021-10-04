@@ -33,12 +33,13 @@
                 </td>
                 <td class="row">
                   <div class="d-flex flex-column user-btn-detail">
-                    <%= link_to t("order.btn_detail"), "#", class: "btn btn-outline-primary" %>
+                    <%= link_to t("order.btn_detail"), user_order_path(current_user, order),
+                      class: "btn btn-outline-primary" %>
                   </div>
                   <% if order.pending? %>
                     <div class="d-flex flex-column">
-                      <%= link_to t("order.btn_cancel"), user_order_cancel_path(current_user, order),
-                        class: "btn btn-outline-danger" %>
+                      <%= link_to t("order.btn_cancel"), cancel_user_order_path(current_user, order),
+                        method: "put", class: "btn btn-outline-danger" %>
                     </div>
                   <% end %>
                 </td>
