@@ -1,9 +1,37 @@
 class OrdersController < ApplicationController
+  before_action :logged_in_user
   before_action :load_shop, :check_owner, only: :index
 
   def index
     @orders = @shop.all_orders
                    .page(params[:page]).per(Settings.length.digit_10)
+  end
+
+  def new
+    return unless load_book_id_in_cart.empty?
+
+    flash[:danger] = t "order.cart_empty"
+    redirect_to root_path
+  end
+
+  def create
+    add_infor_receiver
+    ActiveRecord::Base.transaction do
+      list_shop_id_in_cart.each do |shop_id|
+        list_book = list_book_by_shop_id shop_id
+        order = create_order shop_id
+        add_list_book_to_order_detail list_book, order
+        update_order_total_price list_book, order
+        order.save!
+      end
+    end
+  rescue ActiveRecord::RecordInvalid
+    flash[:danger] = t "order.failed"
+    redirect_to new_user_order_path(current_user)
+  else
+    reset_cart
+    flash[:success] = t "order.success"
+    redirect_to root_path
   end
 
   private
@@ -21,5 +49,43 @@ class OrdersController < ApplicationController
 
     flash[:danger] = t "shared.invalid_permision"
     redirect_to root_url
+  end
+
+  def create_order shop_id
+    current_user.orders.build(
+      shop_id: shop_id,
+      name: params[:name],
+      address: params[:address],
+      phone: params[:phone]
+    )
+  end
+
+  def add_list_book_to_order_detail list_book, order
+    list_book.each do |book|
+      order.order_details.build(
+        quantily: current_cart[book["id"].to_s].to_i,
+        price: book["price"].to_i,
+        book_id: book["id"].to_i
+      )
+    end
+  end
+
+  def update_order_total_price list_book, order
+    total = list_book.map{|b| current_cart[b["id"].to_s].to_i * b["price"].to_i}
+    order.total_price = total.inject(0, :+)
+  end
+
+  def list_shop_id_in_cart
+    Book.by_book_ids(load_book_id_in_cart).pluck(:shop_id).uniq
+  end
+
+  def list_book_by_shop_id id
+    Book.by_book_ids(load_book_id_in_cart).select{|e| e.shop_id == id}
+  end
+
+  def add_infor_receiver
+    current_info_receiver[:name] = params[:name]
+    current_info_receiver[:address] = params[:address]
+    current_info_receiver[:phone] = params[:phone]
   end
 end

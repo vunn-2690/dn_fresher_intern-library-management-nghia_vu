@@ -43,4 +43,16 @@ module SessionsHelper
   def current_cart
     @current_cart ||= session[:cart]
   end
+
+  def current_info_receiver
+    @current_info_receiver ||= session[:info_receiver]
+  end
+
+  def load_param_name
+    if current_info_receiver.any?
+      current_info_receiver["name"]
+    else
+      current_user.name
+    end
+  end
 end

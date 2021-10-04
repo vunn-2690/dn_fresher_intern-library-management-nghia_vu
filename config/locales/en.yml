@@ -1,5 +1,6 @@
 en:
   app: "bucbuc"
+  please_login: "Please login"
   nav:
     home: "Home"
     books: "Books"
@@ -62,6 +63,7 @@ en:
     add_success: "Add the book to cart successfuly"
     quantity_failed: "Quantity exceeds we have"
     pay: "Pay"
+    login_pay: "Login for pay"
     reset: "Reset"
     book_in_cart: "Books in cart"
     title: "TITLE"
@@ -97,3 +99,12 @@ en:
     sending: "Sending"
     success: "Success"
     cancel: "Cancel"
+  order:
+    title: "Delivery Information"
+    cart_empty: "Your cart is empty"
+    success: "Order Success"
+    btn_pay: "Order"
+    name: "Name"
+    address: "Address"
+    phone: "Phone"
+    failed: "Order failed"
