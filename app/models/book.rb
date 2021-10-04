@@ -4,6 +4,7 @@ class Book < ApplicationRecord
   has_many :order_details, dependent: :destroy
   delegate :title, to: :category, prefix: true
   delegate :name, to: :shop, prefix: true
+
   scope :recent_books, ->{order created_at: :desc}
   scope :seach_by_title, (lambda do |keyword|
     where("title LIKE ?", "%#{keyword}%") if keyword.present?

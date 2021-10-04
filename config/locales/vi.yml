@@ -3,7 +3,6 @@ vi:
   title: "BucBucBuc"
   log_in: "Dang nhap"
   sign_up: "Sign Up"
-  welcome: "Chao mung den voi BucBuc"
   forgot_password: "Quen mat khau"
   remember_me: "Luu thong tin"
   the_form_contains: "Contain Form"
@@ -27,10 +26,23 @@ vi:
     see_more: "Xem them"
     view_shop: "Xem Shop"
     search: "Tim kiem"
-    errors:
+    invalid_permision: "Ban khong du quyen truy cap URL nay"
+    error:
       zero: "Khong co loi"
-      one: "Co 1 Loi"
-      other: "Co %{count} Loi"
+      one: "1 Loi"
+      other: "%{count} Loi"
+    not_found: "Not found this shop"
+  orders:
+    shop_title: "DON HANG CUA SHOP"
+    not_found: "Hien khong co don hang nao"
+    customer: "Ten khach hang"
+    phone: "So dien thoai"
+    total_price: "Tong hoa don"
+    status: "Tinh trang"
+    pending: "Hang cho"
+    sending: "Dang gui"
+    success: "Hoan thanh"
+    cancel: "Huy bo"
   activerecord:
     errors:
       models:
