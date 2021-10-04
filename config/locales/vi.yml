@@ -21,8 +21,14 @@ vi:
   shops:
     shops: "Cua hang"
     all_shops: "Tat ca cac cua hang"
+    shop_order: "Quan ly don hang"
+    manage_book: "Quan ly sach"
+    edit_shop: "Chinh sua Shop"
     not_found: "Khong ton tai cua hang nay"
     not_permission: "Don hang nay khong phai cua ban"
+  books:
+    add_success: "Them sach thanh cong"
+    add_fail: "Them sach that bai"
   shared:
     see_more: "Xem them"
     view_shop: "Xem Shop"
