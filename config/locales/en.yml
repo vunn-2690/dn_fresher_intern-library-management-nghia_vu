@@ -126,6 +126,10 @@ en:
     no_order: "No order"
     total_price: "Total price"
     status: "Status"
+    not_found: "Order not found"
+    cancel_failed: "Cancel failed"
+    cancel_success: "Cancel success"
+    access_denied: "Access denied"
   class:
     pending: "badge-warning"
     cancel: "badge-danger"
