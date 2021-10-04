@@ -2,8 +2,8 @@ class OrdersController < ApplicationController
   before_action :load_shop, :check_owner, only: :index
 
   def index
-    @orders = @shop.all_orders.page(params[:page
-      ]).per(Settings.length.digit_10)
+    @orders = @shop.all_orders
+                   .page(params[:page]).per(Settings.length.digit_10)
   end
 
   private
