@@ -4,6 +4,7 @@ class CartsController < ApplicationController
   def index
     @books = Book.by_book_ids(load_book_id_in_cart)
     @cart = current_cart
+    store_location
   end
 
   def create

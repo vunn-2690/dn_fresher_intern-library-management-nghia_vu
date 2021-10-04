@@ -12,22 +12,22 @@ User.create!(
   status: 1)
 User.create!(
   name: "Example User",
-  email: "a32@gmail.com",
+  email: "a@gmail.com",
   password: "123123123",
   password_confirmation: "123123123")
 User.create!(
   name: "Nguyen Dinh Phu Nghia",
-  email: "a3zxcc2@gmail.com",
+  email: "b@gmail.com",
   password: "123123123",
   password_confirmation: "123123123")
 User.create!(
   name: "Nguyen Nam Vu",
-  email: "a32323@gmail.com",
+  email: "c@gmail.com",
   password: "123123123",
   password_confirmation: "123123123")
 User.create!(
   name: "Example User2",
-  email: "v@gmail.com",
+  email: "d@gmail.com",
   password: "123123123",
   password_confirmation: "123123123")
 Shop.create!(
@@ -85,7 +85,7 @@ Order.create!(
   phone: "0905666666",
   total_price: 125000,
   shop_id: 1,
-  user_id: 1)
+  user_id: 2)
 Order.create!(
   name: "Nguyen Nam Vu",
   address: "12345 Example",

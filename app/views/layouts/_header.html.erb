@@ -3,8 +3,12 @@
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item"><%= link_to t("nav.home"), static_pages_home_path, class: "nav-link" %></li>
-      <li class="nav-item"><%= link_to t("nav.books"), "#", class: "nav-link" %></li>
-      <li class="nav-item"><%= link_to t("nav.transactions"), "#", class: "nav-link" %></li>
+      <% if logged_in? %>
+        <li class="nav-item"><%= link_to t("nav.your_shop"), shop_path(current_user.shop.id),
+          class: "nav-link" %></li>
+        <li class="nav-item"><%= link_to t("nav.transactions"), "#",
+          class: "nav-link" %></li>
+      <% end %>
       <li class="nav-item"><%= link_to t("nav.members"), "#", class: "nav-link" %></li>
     </ul>
     <ul class="navbar-nav justify-content-right">

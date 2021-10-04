@@ -50,6 +50,8 @@
       <%= link_to t("cart.reset"), reset_carts_path,
         class: "btn btn-danger btn-pay" %>
     </div>
+    <%= link_to t("cart.back_shopping"),
+      static_pages_home_path, class: "btn btn-primary btn-back-shopping-left" %>
   <% else %>
     <h1 class="text-center cart-index-title">
       <%= t "cart.no_book" %>
