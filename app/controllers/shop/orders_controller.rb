@@ -1,7 +1,8 @@
 class Shop::OrdersController < ApplicationController
   before_action :logged_in_user
-  before_action :load_shop, only: %i(index show)
-  before_action :load_order, only: :show
+  before_action :load_shop, only: %i(index show approve)
+  before_action :load_order, only: %i(show approve)
+  before_action :check_quantity, only: :approve
 
   def index
     @orders = @shop.all_orders
@@ -15,13 +16,52 @@ class Shop::OrdersController < ApplicationController
     end
   end
 
+  def approve
+    ActiveRecord::Base.transaction do
+      if @order.pending?
+        update_quantity @order
+        @order.success!
+        flash[:success] = t "order.approve_success"
+      else
+        flash[:danger] = t "order.approve_failed"
+      end
+    end
+  rescue ActiveRecord::RecordInvalid
+    flash[:danger] = t "order.approve_failed"
+  ensure
+    redirect_back(fallback_location: root_path)
+  end
+
   private
+
+  def update_quantity order
+    list_order_detail = order.order_details
+    list_order_detail.each do |order_detail|
+      book = order_detail.book
+      book.quantity -= order_detail.quantily
+      book.save!
+    end
+  end
+
+  def check_quantity
+    list_order_detail = @order.order_details
+    book_fail = []
+    list_order_detail.each do |order_detail|
+      if order_detail.book.quantity < order_detail.quantily
+        book_fail.push(order_detail.book.id)
+      end
+    end
+    return if book_fail.blank?
+
+    flash[:danger] = t("order.list_book_failed") << book_fail.to_s
+    redirect_back(fallback_location: root_path)
+  end
 
   def load_order
     @order = @shop.orders.find_by id: params[:id]
     return if @order
 
-    flash[:danger] = t "orders.not_found"
+    flash[:danger] = t "order.not_found"
     redirect_to root_url
   end
 
