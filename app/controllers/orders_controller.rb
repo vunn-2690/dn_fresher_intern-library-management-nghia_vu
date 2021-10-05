@@ -1,5 +1,6 @@
 class OrdersController < ApplicationController
   before_action :logged_in_user
+  before_action :load_order, only: :cancel
 
   def new
     return unless load_book_id_in_cart.empty?
@@ -33,7 +34,28 @@ class OrdersController < ApplicationController
                           .per(Settings.length.digit_8)
   end
 
+  def cancel
+    if @order.pending?
+      @order.cancel!
+      flash[:success] = t "order.cancel_success"
+    else
+      flash[:danger] = t "order.cancel_failed"
+    end
+  rescue ActiveRecord::RecordInvalid
+    flash[:danger] = t "order.cancel_failed"
+  ensure
+    redirect_back(fallback_location: root_path)
+  end
+
   private
+
+  def load_order
+    @order = current_user.orders.find_by id: params[:order_id]
+    return if @order
+
+    flash[:danger] = t "order.not_found"
+    redirect_to static_pages_home_path
+  end
 
   def create_order shop_id
     current_user.orders.build(

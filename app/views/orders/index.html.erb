@@ -37,7 +37,8 @@
                   </div>
                   <% if order.pending? %>
                     <div class="d-flex flex-column">
-                      <%= link_to t("order.btn_cancel"), "#", class: "btn btn-outline-danger" %>
+                      <%= link_to t("order.btn_cancel"), user_order_cancel_path(current_user, order),
+                        class: "btn btn-outline-danger" %>
                     </div>
                   <% end %>
                 </td>
