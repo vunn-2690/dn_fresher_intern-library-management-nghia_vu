@@ -1,33 +1,44 @@
-<% provide :title, @shop.name %>
-<div class="body-order">
-  <h1 class="body-header text-center"><%=  t "orders.shop_title" %></h1>
+<% provide :title, t("order.order_infor") %>
+<div class="cart-index container user_order_index">
   <% if @orders.any? %>
-    <div class="row justify-content-center">
-      <div class="col-md-10">
-        <table class="table table-hover">
+    <h1 class="text-center cart-index-title">
+      <%= t "order.your_orders" %>
+    </h1>
+    <div class="container">
+      <div>
+        <table class="table table-hover cart_table">
           <thead>
             <tr>
-              <th class="col-md-1">No.</th>
-              <th class="text-center col-md-3"><%= t "orders.customer" %></th>
-              <th class="text-center col-md-1"><%= t "orders.phone" %></th>
-              <th class="text-center col-md-2"><%= t "orders.total_price" %>
-              <th class="text-center col-md-1"><%= t "orders.status" %></th>
-              <th class="col-md-4"></th>
-            <tr>
+              <th class="text-center">#</th>
+              <th class="text-center"><%= t "order.name" %></th>
+              <th class="text-center"><%= t "order.phone" %></th>
+              <th class="text-center"><%= t "order.total_price" %></th>
+              <th class="text-center"><%= t "order.status" %></th>
+              <th class="text-center"></th>
+            </tr>
           </thead>
           <tbody>
             <% @orders.each_with_index do |order, index|%>
               <tr>
-                <td class="align-middle "><%= index +1 %></td>
-                <td class="align-middle "><%= order.user_name %></td>
-                <td class="text-center align-middle "><%= order.phone %></td>
-                <td class="text-center align-middle "><%= number_to_currency(order.total_price,locale: :vi) %></td>
-                <td class="text-center align-middle"><div class="status <%= order.status %>"><%= t "orders.#{order.status}" %></div></td>
-                <td>
-                  <%= link_to t("shared.details"), shop_order_path(shop_id: order.shop_id, id: order.id), class: "btn btn-outline-primary" %>
-                  <% if !order.cancel? && !order.success? %>
-                    <%= link_to t("shared.approve"), "#", class: "btn btn-outline-success ml-3 mr-3" %>
-                    <%= link_to t("shared.reject"), "#", class: "btn btn-outline-danger" %>
+                <th scope="row" class="text-center"><%= index + 1 %></th>
+                <td class="text-center"><%= order.name %></td>
+                <td class="text-center"><%= order.phone %></td>
+                <td class="text-center">
+                  <%= number_to_currency(order.total_price, locale: :vi) %>
+                </td>
+                <td class="text-center">
+                  <span class="badge <%= t "class.#{order.status}" %>">
+                    <%= order.status %>
+                  </span>
+                </td>
+                <td class="row">
+                  <div class="d-flex flex-column user-btn-detail">
+                    <%= link_to t("order.btn_detail"), "#", class: "btn btn-outline-primary" %>
+                  </div>
+                  <% if order.pending? %>
+                    <div class="d-flex flex-column">
+                      <%= link_to t("order.btn_cancel"), "#", class: "btn btn-outline-danger" %>
+                    </div>
                   <% end %>
                 </td>
               </tr>
@@ -36,10 +47,14 @@
         </table>
       </div>
     </div>
-    <div class="row justify-content-center">
-      <%= paginate @orders, theme: "twitter-bootstrap-4" %>
-    </div>
+    <%= paginate @orders, theme: "twitter-bootstrap-4" %>
+    <%= link_to t("cart.back_shopping"),
+      static_pages_home_path, class: "btn btn-primary btn-back-shopping-left" %>
   <% else %>
-    <h2><%= t "orders.not_found" %></h2>
-  <% end %>  
+    <h1 class="text-center cart-index-title">
+      <%= t "order.no_order" %>
+    </h1>
+    <%= link_to t("cart.back_shopping"),
+      static_pages_home_path, class: "btn btn-primary btn-back-shopping" %>
+  <% end %>
 </div>

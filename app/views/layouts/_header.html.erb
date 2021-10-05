@@ -6,7 +6,7 @@
       <% if logged_in? %>
         <li class="nav-item"><%= link_to t("nav.your_shop"), shop_path(current_user.shop.id),
           class: "nav-link" %></li>
-        <li class="nav-item"><%= link_to t("nav.transactions"), "#",
+        <li class="nav-item"><%= link_to t("nav.transactions"), user_orders_path(current_user),
           class: "nav-link" %></li>
       <% end %>
       <li class="nav-item"><%= link_to t("nav.members"), "#", class: "nav-link" %></li>

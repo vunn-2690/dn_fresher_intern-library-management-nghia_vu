@@ -15,7 +15,7 @@ Rails.application.routes.draw do
       resources :orders
     end
     resources :users, only: %i(new show create) do
-      resources :orders, only: %i(new index create)
+      resources :orders, only: %i(new create index)
     end 
   end
 end

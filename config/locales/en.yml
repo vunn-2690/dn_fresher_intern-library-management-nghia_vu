@@ -101,6 +101,7 @@ en:
     cancel: "Cancel"
   order:
     title: "Delivery Information"
+    order_infor: "Order Information"
     cart_empty: "Your cart is empty"
     success: "Order Success"
     btn_pay: "Order"
@@ -108,3 +109,15 @@ en:
     address: "Address"
     phone: "Phone"
     failed: "Order failed"
+    btn_cancel: "Cancel"
+    btn_detail: "Detail"
+    your_orders: "Your orders"
+    status_success: "success"
+    no_order: "No order"
+    total_price: "Total price"
+    status: "Status"
+  class:
+    pending: "badge-warning"
+    cancel: "badge-danger"
+    success: "badge-success"
+    

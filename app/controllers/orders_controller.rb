@@ -1,11 +1,5 @@
 class OrdersController < ApplicationController
   before_action :logged_in_user
-  before_action :load_shop, :check_owner, only: :index
-
-  def index
-    @orders = @shop.all_orders
-                   .page(params[:page]).per(Settings.length.digit_10)
-  end
 
   def new
     return unless load_book_id_in_cart.empty?
@@ -34,22 +28,12 @@ class OrdersController < ApplicationController
     redirect_to root_path
   end
 
+  def index
+    @orders = current_user.all_orders.page(params[:page])
+                          .per(Settings.length.digit_8)
+  end
+
   private
-
-  def load_shop
-    @shop = Shop.find_by id: params[:shop_id]
-    return if @shop
-
-    flash[:danger] = t("shops.not_found")
-    redirect_to root_url
-  end
-
-  def check_owner
-    return if @shop.user_id == current_user.id
-
-    flash[:danger] = t "shared.invalid_permision"
-    redirect_to root_url
-  end
 
   def create_order shop_id
     current_user.orders.build(
