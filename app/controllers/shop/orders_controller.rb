@@ -19,7 +19,7 @@ class Shop::OrdersController < ApplicationController
 
   def load_order
     @order = @shop.orders.find_by id: params[:id]
-    return if @order  
+    return if @order
 
     flash[:danger] = t "orders.not_found"
     redirect_to root_url
