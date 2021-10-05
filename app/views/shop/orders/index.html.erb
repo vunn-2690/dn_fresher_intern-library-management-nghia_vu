@@ -1,0 +1,45 @@
+<% provide :title, @shop.name %>
+<div class="body-order">
+  <h1 class="body-header text-center"><%=  t "orders.shop_title" %></h1>
+  <% if @orders.any? %>
+    <div class="row justify-content-center">
+      <div class="col-md-10">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th class="col-md-1">No.</th>
+              <th class="text-center col-md-3"><%= t "orders.customer" %></th>
+              <th class="text-center col-md-1"><%= t "orders.phone" %></th>
+              <th class="text-center col-md-2"><%= t "orders.total_price" %>
+              <th class="text-center col-md-1"><%= t "orders.status" %></th>
+              <th class="col-md-4"></th>
+            <tr>
+          </thead>
+          <tbody>
+            <% @orders.each_with_index do |order, index|%>
+              <tr>
+                <td class="align-middle "><%= index +1 %></td>
+                <td class="align-middle "><%= order.user_name %></td>
+                <td class="text-center align-middle "><%= order.phone %></td>
+                <td class="text-center align-middle "><%= number_to_currency(order.total_price,locale: :vi) %></td>
+                <td class="text-center align-middle"><div class="status <%= order.status %>"><%= t "orders.#{order.status}" %></div></td>
+                <td>
+                  <%= link_to t("shared.details"), user_shop_order_path(user_id: current_user.id, id: order.id), class: "btn btn-outline-primary btn-order" %>
+                  <% if order.pending? %>
+                    <%= link_to t("shared.approve"), "#", class: "btn btn-outline-success ml-3 mr-3 btn-order" %>
+                    <%= link_to t("shared.reject"), "#", class: "btn btn-outline-danger btn-order" %>
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <%= paginate @orders, theme: "twitter-bootstrap-4" %>
+    </div>
+  <% else %>
+    <h2><%= t "orders.not_found" %></h2>
+  <% end %>  
+</div>

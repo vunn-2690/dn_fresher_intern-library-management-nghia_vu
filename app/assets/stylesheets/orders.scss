@@ -1,7 +1,8 @@
 .body-order{
   min-height: 80%;
 }
-.body-header{
+
+.font-title{
   color: rgb(22, 115, 177);
 }
 .status{
@@ -24,9 +25,7 @@
   color: white;
   background-color: rgb(241, 116, 116);
 }
-.btn {
-  width: 120px;
-}
+
 .delivery-info {
   margin-top: 60px;
   min-height: 83%;
@@ -54,4 +53,35 @@
 }
 .user_order_index {
   min-height: 83%;
+}
+.btn-order {
+  width: 120px;
+}
+
+.header-order{
+  padding: 20px 0px;
+  margin: 20px 0px;
+}
+
+.card-order{
+  font-size: 18px;
+}
+
+.card-badges{
+  font-size: 18px !important;
+}
+
+.card-header-order{
+  padding-top:20px;
+  border-radius: 10px;
+  border: 1px solid;
+  border-color: rgb(22, 115, 177);
+}
+
+.total{
+  left: 100px;
+}
+
+.contain{
+  background-color: #ebebeb;
 }
