@@ -51,6 +51,8 @@ en:
       zero: "No Error"
       one: "Have 1 Error"
       other: "Have %{count} Errors"
+    disclaim: "Disclaim"
+    approve: "Approve"
   books:
     books: "Books"
     no_book: "We don't have any books yet"
@@ -138,8 +140,11 @@ en:
     access_denied: "Access denied"
     approve_failed: "Approve failed"
     approve_success: "Approve success"
+    disclaim_failed: "Disclaim failed"
+    disclaim_success: "Disclaim success"
     list_book_failed: "List book ID fails quantity: "
   class:
     pending: "badge-warning"
     cancel: "badge-danger"
     success: "badge-success"
+    disclaim: "badge-danger"
