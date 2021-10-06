@@ -20,6 +20,7 @@ Rails.application.routes.draw do
       namespace :shop do
         resources :orders, only: %i(index show) do
           put :approve, on: :member
+          put :disclaim, on: :member
         end
       end
       resources :orders, only: %i(new create index) do
