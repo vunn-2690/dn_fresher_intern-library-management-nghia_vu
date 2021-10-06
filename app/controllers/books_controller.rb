@@ -3,6 +3,16 @@ class BooksController < ApplicationController
 
   def show; end
 
+  def import
+    Book.import(params[:file], params[:shop_id])
+  rescue ActiveRecord::RecordInvalid
+    flash[:danger] = t "books.add_fail"
+    redirect_to root_path
+  else
+    flash[:success] = t "books.add_success"
+    redirect_to root_path
+  end
+
   private
 
   def load_book

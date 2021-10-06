@@ -10,4 +10,13 @@ class Book < ApplicationRecord
     where("title LIKE ?", "%#{keyword}%") if keyword.present?
   end)
   scope :by_book_ids, ->(ids){where id: ids}
+
+  def self.import file, shop_id
+    ActiveRecord::Base.transaction do
+      CSV.foreach(file.path, headers: true) do |row|
+        row[:shop_id] = shop_id
+        Book.create!(row.to_hash)
+      end
+    end
+  end
 end

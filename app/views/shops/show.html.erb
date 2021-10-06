@@ -7,6 +7,19 @@
     <h2 class="title-shop"><%= @shop.name %></h2>
     <p class="description-shop"><%= @shop.description %></p>
   </div>
+  <% if current_user.id == @shop.user_id %>
+    <div class="row">
+      <%= link_to t("shops.shop_order"), user_shop_orders_path(user_id: current_user.id), class: "btn btn-info m-3 btn-lg" %>
+      <%= link_to t("shops.manage_book"), "#", class: "btn btn-info m-3 btn-lg" %>
+      <%= link_to t("shops.edit_shop"), "#", class: "btn btn-info m-3 btn-lg" %>
+      <%= form_tag import_shop_books_path(shop_id: current_user.shop.id ), multipart: true do %>
+        <div class="row">
+          <%= file_field_tag :file , class: "form-control" %>
+          <%= submit_tag t("shops.add_book"), class: "btn btn-info m-3"%>
+        </div>
+     <% end %>
+    </div>
+  <% end %>
 </div>
 <div class="body-shop">
     <% if @books.any? %>

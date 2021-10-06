@@ -22,7 +22,7 @@
                 <td class="align-middle "><%= order.user_name %></td>
                 <td class="text-center align-middle "><%= order.phone %></td>
                 <td class="text-center align-middle "><%= number_to_currency(order.total_price,locale: :vi) %></td>
-                <td class="text-center align-middle"><div class="status <%= order.status %>"><%= t "orders.#{order.status}" %></div></td>
+                <td class="text-center align-middle"><div class="badge <%= t "class.#{order.status}" %>"><%= t "orders.#{order.status}" %></div></td>
                 <td>
                   <%= link_to t("shared.details"), user_shop_order_path(user_id: current_user.id, id: order.id), class: "btn btn-outline-primary btn-order" %>
                   <% if order.pending? %>

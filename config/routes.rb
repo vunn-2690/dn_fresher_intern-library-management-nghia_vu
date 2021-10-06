@@ -11,7 +11,11 @@ Rails.application.routes.draw do
     resources :carts, only: %i(index create destroy) do
       get :reset, on: :collection
     end
-    resources :shops, only: %i(show index)
+    resources :shops, only: %i(show index) do
+      resources :books do
+        collection {post :import}
+      end
+    end
     resources :users, only: %i(new show create) do
       namespace :shop do
         resources :orders, only: %i(index show) do
