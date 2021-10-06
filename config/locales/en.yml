@@ -130,6 +130,9 @@ en:
     cancel_failed: "Cancel failed"
     cancel_success: "Cancel success"
     access_denied: "Access denied"
+    approve_failed: "Approve failed"
+    approve_success: "Approve success"
+    list_book_failed: "List book ID fails quantity: "
   class:
     pending: "badge-warning"
     cancel: "badge-danger"

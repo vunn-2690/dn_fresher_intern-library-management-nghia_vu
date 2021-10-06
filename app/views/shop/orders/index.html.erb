@@ -26,7 +26,8 @@
                 <td>
                   <%= link_to t("shared.details"), user_shop_order_path(user_id: current_user.id, id: order.id), class: "btn btn-outline-primary btn-order" %>
                   <% if order.pending? %>
-                    <%= link_to t("shared.approve"), "#", class: "btn btn-outline-success ml-3 mr-3 btn-order" %>
+                    <%= link_to t("shared.approve"), approve_user_shop_order_path(current_user, order.id),
+                      method: "put", class: "btn btn-outline-success ml-3 mr-3 btn-order" %>
                     <%= link_to t("shared.reject"), "#", class: "btn btn-outline-danger btn-order" %>
                   <% end %>
                 </td>
