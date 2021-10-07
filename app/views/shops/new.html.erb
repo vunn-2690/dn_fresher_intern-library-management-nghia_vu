@@ -1,0 +1,16 @@
+<div class="body row justify-content-center">
+  <div class="col-md-5">
+    <%= form_for @shop, url: user_shops_path do |f| %>
+      <span class="login100-form-title p-b-43 list-shop-title">
+        <%= t "shops.add_shop" %>
+      </span>
+        <%= f.label :name, class: "attribute-form" %> :
+        <%= f.text_field :name, class: "form-control" %>
+        <%= f.label :description, class: "attribute-form" %> :
+        <%= f.text_area :description, size: "70x5", class: "form-control" %>
+        <div class="container-login100-form-btn">
+          <%= f.submit t("shops.add_shop"), class: "login100-form-btn col-md-3 m-4" %>
+        </div>
+    <% end %>
+  </div>
+</div>

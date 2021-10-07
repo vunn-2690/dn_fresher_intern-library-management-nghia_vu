@@ -17,6 +17,7 @@ Rails.application.routes.draw do
       end
     end
     resources :users, only: %i(new show create) do
+      resources :shops, only: %i(new create)
       namespace :shop do
         resources :orders, only: %i(index show) do
           member do 
@@ -24,6 +25,7 @@ Rails.application.routes.draw do
             put :disclaim
           end
         end
+        resource :shops, only: :show
       end
       resources :orders, only: %i(new create index show) do
         put :cancel, on: :member

@@ -7,6 +7,9 @@ class Shop < ApplicationRecord
     where("name LIKE ?", "%#{keyword}%") if keyword.present?
   end)
 
+  validates :name, presence: true, uniqueness: true
+  validates :description, length: {maximum: Settings.length.digit_255}
+
   def all_books
     books.recent_books
   end
