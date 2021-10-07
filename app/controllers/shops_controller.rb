@@ -12,10 +12,10 @@ class ShopsController < ApplicationController
   end
 
   def create
-    @shop = current_user.shop.new shop_params
+    @shop = current_user.build_shop(shop_params)
     if @shop.save
       flash[:success] = t "shops.success"
-      redirect_to @shop
+      redirect_to user_shop_shops_path(current_user.id)
     else
       flash.now[:danger] = t "shops.fail"
       render :new

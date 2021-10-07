@@ -11,9 +11,7 @@ class Shop::OrdersController < ApplicationController
 
   def show
     @order_details = @order.order_details.includes(:book)
-    @total = @order_details.reduce(0) do |total, order|
-      total + order.quantily * order.price
-    end
+    @total = total_order @order_details
   end
 
   def approve
