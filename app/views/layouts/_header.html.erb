@@ -4,13 +4,15 @@
     <ul class="navbar-nav mr-auto">
       <li class="nav-item"><%= link_to t("nav.home"), static_pages_home_path, class: "nav-link" %></li>
       <% if logged_in? %>
-        <% if current_user.shop.present? %>
-          <li class="nav-item"><%= link_to t("nav.your_shop"),  user_shop_shops_path(current_user.id),
-            class: "nav-link" %></li>
-        <% else %>
-          <li class="nav-item"><%= link_to t("nav.create_shop"), new_user_shop_path(current_user.id),
-            class: "nav-link" %></li>
-        <% end %>
+        <li class="nav-item">
+          <% if current_user.shop.present? %>
+            <%= link_to t("nav.your_shop"),  user_shop_shops_path(current_user.id),
+              class: "nav-link" %>
+          <% else %>
+            <%= link_to t("nav.create_shop"), new_user_shop_path(current_user.id),
+              class: "nav-link" %>
+          <% end %>
+        </li>
         <li class="nav-item"><%= link_to t("nav.transactions"), user_orders_path(current_user),
           class: "nav-link" %></li>
       <% end %>
