@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
   before_action :logged_in_user
-  before_action :load_order, only: :cancel
+  before_action :load_order, only: %i(cancel show)
 
   def new
     return unless load_book_id_in_cart.empty?
@@ -47,10 +47,15 @@ class OrdersController < ApplicationController
     redirect_back(fallback_location: root_path)
   end
 
+  def show
+    @order_details = @order.order_details.includes(:book)
+    @total = total_order @order_details
+  end
+
   private
 
   def load_order
-    @order = current_user.orders.find_by id: params[:order_id]
+    @order = current_user.orders.find_by id: params[:id]
     return if @order
 
     flash[:danger] = t "order.not_found"
