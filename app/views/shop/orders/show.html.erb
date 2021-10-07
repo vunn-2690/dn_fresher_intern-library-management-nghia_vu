@@ -44,7 +44,7 @@
               <% @order_details.each_with_index do |order_detail, index|%>
                 <tr>
                   <td class="align-middle "><%= index +1 %></td>
-                  <td class="text-center align-middle "><%= order_detail.book.title %></td>
+                  <td class="text-center align-middle "><%= order_detail.book_title %></td>
                   <td class="text-center align-middle "><%= order_detail.quantily %></td>
                   <td class="text-center align-middle "><%= number_to_currency(order_detail.price, locale: :vi) %></td>
                   <td class="text-center align-middle "><%= number_to_currency(order_detail.price*order_detail.quantily, locale: :vi) %></td>

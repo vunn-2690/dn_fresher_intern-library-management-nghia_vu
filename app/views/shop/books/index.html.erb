@@ -1,0 +1,47 @@
+<% provide :title, @shop.name %>
+<div class="body-order">
+  <h1 class="body-header list-shop-title text-center"><%=  t "books.your_book" %></h1>
+  <div class="row col-md-12 mb-4 justify-content-end">
+    <%= form_tag import_user_shop_books_path(shop_id: current_user.id ), multipart: true, class: "col-md-6 row justify-content-end" do %>
+      <div class="col-md-5"><%= file_field_tag :file , class: "form-control", required: true %></div>
+      <div class="col-md-5"><%= submit_tag t("shops.add_book"), class: "btn btn-info"%></div>
+    <% end %>
+  </div>
+  <% if @books.any? %>
+    <div class="row justify-content-center">
+      <div class="col-md-10">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th class="col-md-1">No.</th>
+              <th class="text-center col-md-3"><%= t "books.book_name" %></th>
+              <th class="text-center col-md-1"><%= t "books.quantity" %></th>
+              <th class="text-center col-md-2"><%= t "books.price" %>
+              <th class="col-md-4"></th>
+            <tr>
+          </thead>
+          <tbody>
+            <% @books.each_with_index do |book, index|%>
+              <tr>
+                <td class="align-middle "><%= index +1 %></td>
+                <td class="text-center align-middle "><%= book.title %></td>
+                <td class="text-center align-middle "><%= book.quantity %></td>
+                <td class="text-center align-middle "><%= number_to_currency(book.price,locale: :vi) %></td>
+                <td>
+                  <%= link_to t("shared.details"), "#", class: "btn btn-outline-primary btn-order" %>
+                  <%= link_to t("shared.edit"), "#", class: "btn btn-outline-warning btn-order m-2" %>
+                  <%= link_to t("shared.delete"), "#", class: "btn btn-outline-danger btn-order" %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="row justify-content-center paginate-white">
+      <%= paginate @books, theme: "twitter-bootstrap-4" %>
+    </div>
+  <% else %>
+    <h2><%= t "books.not_found" %></h2>
+  <% end %>  
+</div>
