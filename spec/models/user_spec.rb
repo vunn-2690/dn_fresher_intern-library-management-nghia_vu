@@ -11,6 +11,7 @@ RSpec.describe User, type: :model do
         expect validate_length_of(:name).is_at_most(2).with_message I18n.t("activerecord.errors.models.user.attributes.name.too_short")
       end
     end
+
     context "email" do
       it "when nil is invalid" do
         expect(FactoryBot.build(:user, email: nil)).to be_invalid
@@ -29,6 +30,7 @@ RSpec.describe User, type: :model do
                                           .with_message I18n.t("activerecord.errors.models.user.attributes.email.invalid")
       end
     end
+
     context "password" do
       it "when too short is invalid" do
         expect validate_length_of(:password).is_at_most(2).with_message I18n.t("activerecord.errors.models.user.attributes.password.too_short")
@@ -42,11 +44,13 @@ RSpec.describe User, type: :model do
         expect(User.digest("123123123")).to be_an(BCrypt::Password)
       end
     end
+
     context ".new_token" do
       it "should return string" do
         expect(User.new_token).to be_an(String)
       end
     end
+
     context "#remember" do
       it "should update remember digest success" do
         user.remember
@@ -54,6 +58,7 @@ RSpec.describe User, type: :model do
         expect(user.remember_digest).to be_truthy
       end
     end
+
     context "#forget" do
       it "should update remember digest to be nil success" do
         user.forget
@@ -61,6 +66,7 @@ RSpec.describe User, type: :model do
         expect(user.remember_digest).to be_nil
       end
     end
+
     context "#authenticated?" do
       it "should be return false when digest nil" do
         expect(
