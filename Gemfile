@@ -26,14 +26,14 @@ gem "webpacker", "~> 5.0"
 
 group :development, :test do
   gem "byebug", platforms: %i(mri mingw x64_mingw)
-  gem "rubocop", "~> 0.74.0", require: false
-  gem "rubocop-checkstyle_formatter", require: false
-  gem "rubocop-rails", "~> 2.3.2", require: false
   gem "database_cleaner", "~> 1.7"
   gem "factory_bot_rails"
   gem "rails-controller-testing"
   gem "rspec-rails", git: "https://github.com/rspec/rspec-rails",
     branch: "4-0-maintenance"
+  gem "rubocop", "~> 0.74.0", require: false
+  gem "rubocop-checkstyle_formatter", require: false
+  gem "rubocop-rails", "~> 2.3.2", require: false
   gem "shoulda-matchers"
 end
 
@@ -47,9 +47,9 @@ end
 group :test do
   gem "capybara", ">= 3.26"
   gem "selenium-webdriver"
-  gem "webdrivers"
-  gem "simplecov-rcov"
   gem "simplecov"
+  gem "simplecov-rcov"
+  gem "webdrivers"
 end
 
 gem "tzinfo-data", platforms: %i(mingw mswin x64_mingw jruby)
