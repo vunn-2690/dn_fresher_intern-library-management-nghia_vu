@@ -114,6 +114,8 @@ en:
             name:
               taken: "is used"
               blank: "is require"
+            descriptop:
+              too_long: "is maximum character is 255"
       messages:
         confirmation: "and Password must match."
   orders:
