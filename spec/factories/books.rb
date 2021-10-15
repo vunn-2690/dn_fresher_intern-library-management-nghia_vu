@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :book do
-    title {Faker::Book.title} 
+    title {Faker::Book.title}
     price {Faker::Number.between(from: 50000, to: 125000)}
     description {Faker::Book.publisher}
     quantity {Faker::Number.between(from: 1, to: 50)}
