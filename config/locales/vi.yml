@@ -99,5 +99,9 @@ vi:
             name:
               taken: "da duoc su dung"
               blank: "khong duoc de trong"
+        book:
+          attributes:
+            name:
+              blank: "khong duoc de trong"
       messages:
         confirmation: "phai giong Password"

@@ -116,6 +116,10 @@ en:
               blank: "is require"
             descriptop:
               too_long: "is maximum character is 255"
+        book:
+          attributes:
+            name:
+              blank: "is require"
       messages:
         confirmation: "and Password must match."
   orders:
