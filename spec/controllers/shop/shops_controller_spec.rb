@@ -1,11 +1,10 @@
 require "rails_helper"
-include SessionsHelper
 
 RSpec.describe Shop::ShopsController, type: :controller do
   describe "GET #show" do
     before do
       @user = FactoryBot.create :user
-      log_in @user
+      sign_in @user
     end
     context "when shop does not exist" do
       before do

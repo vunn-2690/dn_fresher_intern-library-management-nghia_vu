@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  before_action :logged_in_user
+  before_action :check_user
   before_action :load_order, only: %i(cancel show)
 
   def new
@@ -98,5 +98,17 @@ class OrdersController < ApplicationController
     current_info_receiver[:name] = params[:name]
     current_info_receiver[:address] = params[:address]
     current_info_receiver[:phone] = params[:phone]
+  end
+
+  def check_user
+    if user_signed_in?
+      return if current_user.id == params[:user_id].to_i
+
+      flash[:danger] = t "shared.invalid_permision"
+      redirect_to root_url
+    else
+      flash[:danger] = t "please_login"
+      redirect_to login_path
+    end
   end
 end

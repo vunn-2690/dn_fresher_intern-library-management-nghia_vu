@@ -37,47 +37,4 @@ RSpec.describe User, type: :model do
       end
     end
   end
-
-  describe "methods" do    
-    context ".digest" do
-      it "should return an instance of Bcrypt::Password" do
-        expect(User.digest("123123123")).to be_an(BCrypt::Password)
-      end
-    end
-
-    context ".new_token" do
-      it "should return string" do
-        expect(User.new_token).to be_an(String)
-      end
-    end
-
-    context "#remember" do
-      it "should update remember digest success" do
-        user.remember
-        user.reload
-        expect(user.remember_digest).to be_truthy
-      end
-    end
-
-    context "#forget" do
-      it "should update remember digest to be nil success" do
-        user.forget
-        user.reload
-        expect(user.remember_digest).to be_nil
-      end
-    end
-
-    context "#authenticated?" do
-      it "should be return false when digest nil" do
-        expect(
-          user.authenticated? :remember, "123123123"
-        ).to eq false
-      end
-      it "should be return false when digest presence" do
-        expect(
-          user.authenticated? :remember, User.digest("123123123")
-        ).to eq false
-      end
-    end
-  end
 end

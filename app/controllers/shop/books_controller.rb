@@ -1,4 +1,5 @@
 class Shop::BooksController < ApplicationController
+  before_action :check_user, only: %i(index show import)
   before_action :check_file, only: :import
   before_action :load_shop, only: %i(index show)
   before_action :load_book, only: :show
@@ -44,5 +45,17 @@ class Shop::BooksController < ApplicationController
 
     flash[:danger] = t "books.not_found"
     redirect_to static_pages_home_path
+  end
+
+  def check_user
+    if user_signed_in?
+      return if current_user.id == params[:user_id].to_i
+
+      flash[:danger] = t "shared.invalid_permision"
+      redirect_to root_url
+    else
+      flash[:danger] = t "please_login"
+      redirect_to login_path
+    end
   end
 end

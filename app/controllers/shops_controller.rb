@@ -42,14 +42,14 @@ class ShopsController < ApplicationController
   end
 
   def check_user
-    if logged_in?
+    if user_signed_in?
       return if current_user.id == params[:user_id].to_i
 
       flash[:danger] = t "shared.invalid_permision"
       redirect_to root_url
     else
       flash[:danger] = t "please_login"
-      redirect_to login_path
+      redirect_to new_user_session_path
     end
   end
 end

@@ -1,10 +1,14 @@
 Rails.application.routes.draw do
+  devise_for :users, skip: [:sessions]
+  as :user do
+    get ":locale/login" => "devise/sessions#new", :as => :new_user_session
+    post ":locale/login" => "devise/sessions#create", :as => :user_session
+    get ":locale/logout" => "devise/sessions#destroy", :as => :destroy_user_session
+  end
+  
   scope "(:locale)", locale: /en|vi/ do
     root "static_pages#home"
     get "static_pages/home"
-    get "/login", to: "sessions#new"
-    post "/login", to: "sessions#create"
-    get "/logout", to: "sessions#destroy"
     resources :books, only: :show
     get "/signup", to: "users#new"
     post "/signup", to: "users#create"

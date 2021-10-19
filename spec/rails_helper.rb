@@ -32,6 +32,9 @@ RSpec.configure do |config|
   config.after(:each) do
     DatabaseCleaner.clean
   end
+
+  config.include Devise::Test::ControllerHelpers, type: :view
+  config.include Devise::Test::ControllerHelpers, type: :controller
   
   require 'shoulda/matchers'  
   Shoulda::Matchers.configure do |config|
