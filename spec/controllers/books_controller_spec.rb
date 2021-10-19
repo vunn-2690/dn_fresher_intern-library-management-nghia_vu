@@ -10,6 +10,9 @@ RSpec.describe BooksController, type: :controller do
       it "return book" do
         expect(assigns(:book)).to eq book
       end
+      it "render show" do
+        expect(response).to render_template(:show)
+      end
     end
     context "when book does not exist" do
       before do
