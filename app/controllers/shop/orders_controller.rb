@@ -3,6 +3,7 @@ class Shop::OrdersController < ApplicationController
   before_action :load_shop, only: %i(index show approve disclaim)
   before_action :load_order, only: %i(show approve disclaim)
   before_action :check_quantity, only: :approve
+  before_action :check_user, only: %i(index show approve disclaim)
 
   def index
     @orders = @shop.all_orders
@@ -82,5 +83,17 @@ class Shop::OrdersController < ApplicationController
 
     flash[:danger] = t("shops.not_found")
     redirect_to root_url
+  end
+
+  def check_user
+    if logged_in?
+      return if current_user.id == params[:user_id].to_i
+
+      flash[:danger] = t "shared.invalid_permision"
+      redirect_to root_url
+    else
+      flash[:danger] = t "please_login"
+      redirect_to login_path
+    end
   end
 end
