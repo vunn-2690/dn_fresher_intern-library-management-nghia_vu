@@ -1,12 +1,11 @@
 require "rails_helper"
-include SessionsHelper
 
 RSpec.describe Shop::OrdersController, type: :controller do
   describe "GET #index" do
     context "when user login" do
       before do
         @user = FactoryBot.create :user
-        log_in @user
+        sign_in @user
       end
       context "when user have not shop" do
         before do
@@ -33,13 +32,13 @@ RSpec.describe Shop::OrdersController, type: :controller do
     
     context "when user not login" do
       before do
-        get :index, params: {user_id: 1}
+        get :index, params: {locale: "en", user_id: 1}
       end
       it "return flash danger" do
-        expect(flash[:danger]).to eq I18n.t("please_login")
+        expect(flash[:alert]).to eq I18n.t("devise.failure.unauthenticated")
       end
       it "redirects to login" do
-        expect(response).to redirect_to login_path
+        expect(response).to redirect_to new_user_session_path
       end
     end
   end
@@ -48,7 +47,7 @@ RSpec.describe Shop::OrdersController, type: :controller do
     context "when user login" do
       before do
         @user = FactoryBot.create :user
-        log_in @user
+        sign_in @user
       end
       context "when user have not shop" do
         let!(:order){FactoryBot.create(:order)}
@@ -93,13 +92,13 @@ RSpec.describe Shop::OrdersController, type: :controller do
 
     context "when user not login" do
       before do
-        get :show, params: {user_id: 2, id: 5}
+        get :show, params: {locale: "en", user_id: 2, id: 5}
       end
       it "return flash danger" do
-        expect(flash[:danger]).to eq I18n.t("please_login")
+        expect(flash[:alert]).to eq I18n.t("devise.failure.unauthenticated")
       end
       it "redirects to login" do
-        expect(response).to redirect_to login_path
+        expect(response).to redirect_to new_user_session_path
       end
     end
   end
@@ -108,7 +107,7 @@ RSpec.describe Shop::OrdersController, type: :controller do
     context "when user login" do
       before do
         @user = FactoryBot.create :user
-        log_in @user
+        sign_in @user
       end
       context "when user have not shop" do
         let!(:order){FactoryBot.create(:order)}
@@ -167,13 +166,13 @@ RSpec.describe Shop::OrdersController, type: :controller do
       let!(:order){FactoryBot.create(:order)}
       let!(:order_detail){FactoryBot.create(:order_detail, order_id: order.id)}
       before do
-        put :approve, params: {user_id: 2, id: order.id}
+        put :approve, params: {locale: "en", user_id: 2, id: order.id}
       end
       it "return flash danger" do
-        expect(flash[:danger]).to eq I18n.t("please_login")
+        expect(flash[:alert]).to eq I18n.t("devise.failure.unauthenticated")
       end
       it "redirects to login" do
-        expect(response).to redirect_to login_path
+        expect(response).to redirect_to new_user_session_path
       end
     end
   end
@@ -182,13 +181,13 @@ RSpec.describe Shop::OrdersController, type: :controller do
     context "when user login" do
       before do
         @user = FactoryBot.create :user
-        log_in @user
+        sign_in @user
       end
       context "when user have not shop" do
         let!(:order){FactoryBot.create(:order)}
         let!(:order_detail){FactoryBot.create(:order_detail, order_id: order.id)}
         before do
-          put :disclaim, params: {user_id: @user.id, id: order.is}
+          put :disclaim, params: {user_id: @user.id, id: order.id}
         end
         it "return flash danger" do
           expect(flash[:danger]).to eq I18n.t("shops.not_found")
@@ -241,13 +240,13 @@ RSpec.describe Shop::OrdersController, type: :controller do
       let!(:order){FactoryBot.create(:order)}
       let!(:order_detail){FactoryBot.create(:order_detail, order_id: order.id)}
       before do
-        put :disclaim, params: {user_id: 2, id: order.id}
+        put :disclaim, params: {locale: "en", user_id: 2, id: order.id}
       end
       it "return flash danger" do
-        expect(flash[:danger]).to eq I18n.t("please_login")
+        expect(flash[:alert]).to eq I18n.t("devise.failure.unauthenticated")
       end
       it "redirects to login" do
-        expect(response).to redirect_to login_path
+        expect(response).to redirect_to new_user_session_path
       end
     end
   end

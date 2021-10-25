@@ -3,7 +3,7 @@
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item"><%= link_to t("nav.home"), static_pages_home_path, class: "nav-link" %></li>
-      <% if logged_in? %>
+      <% if user_signed_in? %>
         <li class="nav-item">
           <% if current_user.shop.present? %>
             <%= link_to t("nav.your_shop"),  user_shop_shops_path(current_user.id),
@@ -19,10 +19,10 @@
       <li class="nav-item"><%= link_to t("nav.members"), shops_path, class: "nav-link" %></li>
     </ul>
     <ul class="navbar-nav justify-content-right">
-      <% unless current_user %>
-        <li class="nav-item"><%= link_to t("nav.login_signup"), login_path, class: "nav-link" %></li>
+      <% unless user_signed_in? %>
+        <li class="nav-item"><%= link_to t("nav.login_signup"), new_user_session_path, class: "nav-link" %></li>
       <% else %>
-        <li class="nav-item"><%= link_to t("nav.logout"), logout_path, class: "nav-link" %></li>
+        <li class="nav-item"><%= link_to t("nav.logout"), destroy_user_session_path, class: "nav-link" %></li>
       <% end %>
       <li class="dropdown">
         <%= link_to "#", class: "dropdown-toggle nav-link", data: {toggle: "dropdown"} do %>

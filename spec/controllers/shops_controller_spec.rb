@@ -40,7 +40,7 @@ RSpec.describe ShopsController, type: :controller do
     context "when user login" do
       before do
         @user = FactoryBot.create :user
-        log_in @user
+        sign_in @user
       end
       context "when valid user" do
         before do
@@ -75,7 +75,7 @@ RSpec.describe ShopsController, type: :controller do
         expect(flash[:danger]).to eq I18n.t("please_login")
       end
       it "redirects to login" do
-        expect(response).to redirect_to login_path
+        expect(response).to redirect_to new_user_session_path
       end
     end
   end
@@ -84,7 +84,7 @@ RSpec.describe ShopsController, type: :controller do
     context "when user login" do
       before do
         @user = FactoryBot.create :user
-        log_in @user
+        sign_in @user
       end
   
       context "when valid user" do
@@ -96,7 +96,7 @@ RSpec.describe ShopsController, type: :controller do
             }, user_id: @user.id}
           end
           it "redirects to the users" do
-            expect(response).to redirect_to user_shop_shops_path(current_user.id)
+            expect(response).to redirect_to user_shop_shops_path(@user.id)
           end
           it "display flash message" do
             expect(flash[:success]).to eq I18n.t("shops.success")
@@ -143,7 +143,7 @@ RSpec.describe ShopsController, type: :controller do
         expect(flash[:danger]).to eq I18n.t("please_login")
       end
       it "redirects to login" do
-        expect(response).to redirect_to login_path
+        expect(response).to redirect_to new_user_session_path
       end
     end
   end

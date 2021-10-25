@@ -1,0 +1,55 @@
+# Additional translations at https://github.com/heartcombo/devise/wiki/I18n
+
+vi:
+  devise:
+    confirmations:
+      confirmed: "Email cua ban da duoc xac thuc thanh cong"
+      send_instructions: "Ban se nhan duoc email xac nhan trong it phut nua. Vui long kiem tra email"
+      send_paranoid_instructions: "If your email address exists in our database, you will receive an email with instructions for how to confirm your email address in a few minutes."
+    failure:
+      already_authenticated: "Ban dang dang nhap"
+      inactive: "Tai khoan cua ban chua duoc kick hoat"
+      invalid: "Sai %{authentication_keys} hoac mat khau"
+      locked: "Tai khoan cua ban da bi khoa"
+      last_attempt: "Ban con mot lan thu truoc khi tai khoan bi khoa"
+      not_found_in_database: "Sai %{authentication_keys} hoac mat khau"
+      timeout: "Phien dang nhap da het han, vui long dang nhap lai"
+      unauthenticated: "Ban can dang nhap hoac dang ky de tiep tuc"
+      unconfirmed: "Ban phai xac nhan tai khoan truoc khi tiep tuc"
+    mailer:
+      confirmation_instructions:
+        subject: "Huong dan xac nhan"
+      reset_password_instructions:
+        subject: "Huong dan dat lai mat khau"
+      unlock_instructions:
+        subject: "Huong dan mo khoa"
+      email_changed:
+        subject: "Thay doi email"
+      password_change:
+        subject: "Thay doi mat khau"
+    omniauth_callbacks:
+      failure: "Could not authenticate you from %{kind} because \"%{reason}\"."
+      success: "Successfully authenticated from %{kind} account."
+    passwords:
+      updated: "Mat khau da duoc thay doi thanh cong, ban hien da dang nhap"
+      updated_not_active: "Mat khau da duoc thay doi thanh cong"
+    registrations:
+      destroyed: "Tam biet ! Tai khoan cua ban da bi xoa"
+      signed_up: "Chao mung, ban da dang ky thanh cong"
+      signed_up_but_inactive: "Ban da dang ky thanh cong, tuy nhien chua the dang nhap neeu ban chua kick hoat email"
+      updated: "Your account has been updated successfully."
+      updated_but_not_signed_in: "Your account has been updated successfully, but since your password was changed, you need to sign in again."
+    sessions:
+      signed_in: "Dang nhap thanh cong"
+      signed_out: "Dang xuat thanh cong"
+      already_signed_out: "Dang xuat thanh cong"
+  errors:
+    messages:
+      already_confirmed: "was already confirmed, please try signing in"
+      confirmation_period_expired: "needs to be confirmed within %{period}, please request a new one"
+      expired: "has expired, please request a new one"
+      not_found: "not found"
+      not_locked: "was not locked"
+      not_saved:
+        one: "1 error prohibited this %{resource} from being saved:"
+        other: "%{count} errors prohibited this %{resource} from being saved:"
